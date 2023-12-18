@@ -1,0 +1,42 @@
+
+<div class="sign-in-main ">
+    <div class="surface-card p-4 shadow-2 border-round w-full lg:w-3">
+        <div class="text-center mb-5">
+            <!-- <img src="assets/images/blocks/logos/hyper.svg" alt="Image" height="50" class="mb-3"> -->
+            <div class="text-900 text-3xl font-medium mb-3">Welcome ANPR</div>
+            <span class="text-600 font-medium line-height-3">Already have an account?</span>
+            <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer" routerLink="/login">Sign in</a>
+        </div>
+    
+        <div [formGroup]="form">
+            <label for="email1" class="block text-900 font-medium mb-2">FirstName</label>
+            <input id="email1" type="text" placeholder="FirstName" pInputText class="w-full mb-3" formControlName="firstName">
+            <div *ngIf="f['email']?.touched && f['email']?.invalid" class="text-red-400">
+                <div *ngIf="f['firstName'].errors && f['firstName'].errors['required']">FirstName is required.</div>
+                <div *ngIf="f['firstName'].errors && f['firstName'].errors['firstName']">FirstName allowed min 3, max 15 chars</div>
+            </div>
+
+            <label for="email1" class="block text-900 font-medium mb-2">LastName</label>
+            <input id="email1" type="text" placeholder="LastName" pInputText class="w-full mb-3" formControlName="lastName">
+            <div *ngIf="f['email']?.touched && f['email']?.invalid" class="text-red-400">
+                <div *ngIf="f['lastName'].errors && f['lastName'].errors['lastName']">FirstName is required.</div>
+                <div *ngIf="f['lastName'].errors && f['lastName'].errors['lastName']">LastName allowed min 3, max 15 chars</div>
+            </div>
+
+            <label for="email1" class="block text-900 font-medium mb-2">Email</label>
+            <input id="email1" type="text" placeholder="Email address" pInputText class="w-full mb-3" formControlName="email">
+            <div *ngIf="f['email']?.touched && f['email']?.invalid" class="text-red-400">
+                <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
+                <div *ngIf="f['email'].errors && f['email'].errors['email']">Please, enter valid email
+                  address.
+                </div>
+            </div>
+    
+            <label for="phone" class="block text-900 font-medium mb-2">Phone</label>
+            <input id="phone" type="text" pKeyFilter="int" placeholder="Phone Number" pInputText class="w-full mb-3" formControlName="phone" maxlength="10">
+            
+            <p-button icon="pi pi-check" label="Sign In" (onClick)="signup()" class="w-full flex justify-content-center"></p-button>
+            <!-- <button pButton label="Sign In" class="w-full"></button> -->
+        </div>
+    </div>
+</div>
